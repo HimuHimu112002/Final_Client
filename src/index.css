@@ -1,0 +1,242 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #EEEFF0;
+}
+
+a{
+  text-decoration: none;
+  color: #FD6011;
+}
+
+.registration_icon--section{
+  position: relative;
+}
+
+.registration_icon{
+  position: absolute;
+  top: 23px;
+  right: 10px;
+  cursor: pointer;
+}
+/* ================= Top Menu section start ==================*/
+
+.NavSearchBox__Size, .menu__select--box{
+  position: relative;
+  width: 500px;
+  padding: 10px 45px;
+  box-shadow: none !important;
+}
+
+.NavSearchBox__Size:focus{
+  border: 1px solid #F99F1C !important;
+}
+
+.NavSearchBox{
+  position: relative;
+}
+
+.Search__icon{
+  font-size: 30px;
+  color: #F99F1C;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.profile__section{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: #FD6011;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Nav__layout{
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu__item{
+  display: flex;
+  margin-left: 20px;
+}
+
+.menu__item p{
+  margin-top: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile__account{
+  width: 300px;
+  position: absolute;
+  padding: 15px;
+  border-radius: 5px;
+  top: 70px;
+  right: 2px;
+  z-index: 1;
+}
+
+.profile__img--section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  padding: 5px;
+  background-color: #FD6011;
+}
+.profile__img--section img{
+width: 100%;
+height: 100%;
+border-radius: 50%;
+
+}
+
+.LogOutBtn{
+  width: 100% !important;
+}
+.LoginButton{
+  background-color: #FD6011;
+}
+
+/* =================== Top Menu section end ====================== */
+
+/* =================== hero section start ======================== */
+
+.hero__Bg--color{
+  border-radius: 50px;
+  background-color: #F99F1C;
+}
+
+.hero__left--content{
+  padding-left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.hero__left--content h1{
+  font-size: 60px;
+}
+
+.hero__left--content p{
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* ============== hero section end ===================== */
+
+
+
+/* ============== Food Product section start ============== */
+
+.product__img{
+  margin: auto;
+  width: 310px;
+  height: 300px;
+  padding: 3px;
+
+}
+
+.product__des{
+  display: flex;
+  justify-content: space-around;
+}
+
+.product__price{
+  color: #F99F1C;
+}
+
+.food__detail--button{
+  cursor: pointer;
+}
+
+/* ============================= Food Product section end ======================== */
+
+
+/* ============================= footer section start ======================== */
+
+.footerSearchBox__Size{
+  width: 100% !important;
+  border-radius: 50px;
+  padding: 15px 30px;
+  box-shadow: none !important;
+}
+
+.FooterSearchBox{
+  position: relative;
+}
+
+.footer__main--section{
+  background-color: #F99F1C;
+}
+
+.footer__btn, .nav__search--btn{
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  padding: 5px 30px;
+  background-color: #FD6011 !important;
+  border-radius: 50px;
+  color: white !important;
+  font-weight: 500;
+  border: none;
+}
+
+.nav__search--btn{
+  top: 8px;
+  padding: 3px 15px;
+}
+
+.footer__search--icon{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.footer__left--subDes{
+  font-weight: 500;
+}
+
+.footer__social{
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.footer__socialIcon--section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__social--icon{
+  width: 50px;
+  height: 50px;
+  background-color: #EEEFF0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: #FD6011;
+}
+
+.scroll-to-top {
+  background-color: #FD6011 !important;
+  color: white !important;
+}
+
+/* ============================= Footer section end ======================== */
