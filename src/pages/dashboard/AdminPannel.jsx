@@ -8,10 +8,16 @@ import MasterLayout from '../../components/MasterLayout';
 const AdminPannel = () => {
     let [brand, setBrand] = useState("")
     let [brandname, setBrandName] = useState([])
-    let [branderror, setBrandError] = useState("")
+    let [image, setImage] = useState("")
     let [foodItemname, setFoodIteme] = useState([])
     let [category, setCategory] = useState("")
     let [categoryname, setCategoryName] = useState([])
+    
+    let [foodname, setFoodName] = useState("")
+    let [brandvalue, setBrandValue] = useState("")
+    let [categoryvalue, setCategoryValue] = useState("")
+    let [price, setPrice] = useState("")
+    let [dis, setDis] = useState("")
 
     // Add brand value
     let handleBrand = async () =>{
@@ -38,7 +44,7 @@ const AdminPannel = () => {
           setBrandName(data.data.data)
         }
         allproduct()
-    },[])
+    },[brandname])
 
     // Add category value
     let handleCategory = async () =>{
@@ -48,7 +54,7 @@ const AdminPannel = () => {
                 category: category,
             })
             if(data.data.error){
-                setBrandError(data.data.error)
+                //setBrandError(data.data.error)
             }
             if(data.data['status'] === "success"){
                 toast.success('category Add Success')
@@ -65,7 +71,7 @@ const AdminPannel = () => {
           setCategoryName(data.data.data)
         }
         allproduct()
-    },[])
+    },[categoryname])
     
     // Count total food
     useEffect(()=>{
@@ -75,6 +81,42 @@ const AdminPannel = () => {
         }
         allproduct()
     },[])
+
+
+    let handleFname =(e)=>{
+        setFoodName(e.target.value)
+    }
+    let handleFprice =(e)=>{
+        setPrice(e.target.value)
+    }
+    let handleFbrand =(e)=>{
+        setBrandValue(e.target.value)
+    }
+    let handleFcategory =(e)=>{
+        setCategoryValue(e.target.value)
+    }
+    let handleFdis =(e)=>{
+        setDis(e.target.value)
+    }
+    let handleFoodSave = async ()=>{
+        if(foodname && price && brandvalue && categoryvalue && dis){
+            let data = await axios.post("http://localhost:5000/api/v1/addfood",
+            {
+                name: foodname,
+                price: price,
+                // img: image,
+                brand: brandvalue,
+                category: categoryvalue,
+                discription: dis,
+            })
+            if(data.data.error){
+                //setBrandError(data.data.error)
+            }
+            if(data.data['status'] === "success"){
+                toast.success('Food Item Add Success')
+            }
+        }
+    }
     
   return (
     <MasterLayout>
@@ -130,25 +172,38 @@ const AdminPannel = () => {
                 <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Food Name</Form.Label>
-                        <Form.Control type="text" placeholder="Apple" />
+                        <Form.Control onChange={handleFname} type="text" placeholder="Apple" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Food Price</Form.Label>
-                        <Form.Control type="text" placeholder="Price" />
+                        <Form.Control onChange={handleFprice} type="text" placeholder="Price" />
+                    </Form.Group>
+
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <input
+                        type="file"
+                        id="image"
+                        name="img"
+                        onChange={(e) => setImage(e.target.files[0])}
+
+                        />
                     </Form.Group>
 
                     <Form.Label>Select Brand Name</Form.Label>
-                    <Form.Select className="mb-3" aria-label="Default select example">
-                        <option>Open this select menu</option>
+                    <Form.Select onChange={handleFbrand} className="mb-3" aria-label="Default select example">
+                        <option>Open this select Brand</option>
                         {brandname.map((item, i)=>(
-                            <option key={i}>{item.brand}</option>
+                            <>
+                                <option key={i}>{item.brand}</option>
+                                <Button>delte</Button>
+                            </>
                         ))}
                     </Form.Select>
 
                     <Form.Label>Select Category Name</Form.Label>
-                    <Form.Select className="mb-3" aria-label="Default select example">
-                        <option>Open this select menu</option>
+                    <Form.Select onChange={handleFcategory} className="mb-3" aria-label="Default select example">
+                        <option>Open this select Category</option>
                         {categoryname.map((item, i)=>(
                             <option key={i}>{item.category}</option>
                         ))}
@@ -156,10 +211,10 @@ const AdminPannel = () => {
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Food Description</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Control onChange={handleFdis} as="textarea" rows={3} />
                     </Form.Group>
                 </Form>
-                <Button variant="primary">Save Food</Button>
+                <Button onClick={handleFoodSave} variant="primary">Save Food</Button>
                 <Link className='mx-3' to="/profile"><Button variant="primary">Back to profile</Button></Link>
             </Col>
         </Row>

@@ -29,10 +29,10 @@ function NavMenu() {
     navigate(`/search/${name}`)
   }
   return (
-    <Navbar expand="lg shadow py-4">
+    <Navbar expand="lg shadow py-4 sticky-top bg-dark">
       <Container>
 
-        <h2>Pti.</h2>
+        <h2 className='text-white'>Pti.</h2>
         <div className='Nav__layout'>
 
           <Form className="NavSearchBox m-auto shadow-sm">
@@ -48,8 +48,8 @@ function NavMenu() {
           </Form>
 
           <div className='menu__item'>
-            <Link to="/"><p>Home</p></Link>
-            <Link to="/product"><p>All Food</p></Link>
+            <Link to="/"><p className='text-white'>Home</p></Link>
+            <Link to="/product"><p className='text-white'>All Food</p></Link>
             {!data &&
               <Link to="/login"><p className='LoginButton px-2 py-1 rounded text-white'>Login</p></Link>
             }

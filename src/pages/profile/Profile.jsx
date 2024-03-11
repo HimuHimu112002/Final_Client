@@ -106,7 +106,7 @@ const Profile = () => {
       setProduct(data.data.data[0])
     }
     allproduct()
-  },[])
+  },[product])
 
 
   return (
@@ -120,35 +120,23 @@ const Profile = () => {
 
             <Col md="6" className='mt-1 m-auto'>
 
-              <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsName} controlId="floatingInput" label={product.name}>
+              <FloatingLabel value="dfd" className='registration_icon--section' onChange={handleRegistrationsName} controlId="floatingInput" label="Name">
                   <Form.Control size="sm" type="text" placeholder="Name"/>
                   <AiOutlineUser className='registration_icon'></AiOutlineUser>
               </FloatingLabel>
               <p className='text-danger'>{userNameerror}</p>
 
-              <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsEmal} controlId="floatingInput" label={product.email}>
+              <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsEmal} controlId="floatingInput" label="Email">
                   <Form.Control type="email" placeholder="name@example.com" />
                   <AiOutlineMail className='registration_icon'></AiOutlineMail>
               </FloatingLabel>
               <p className='text-danger'>{userEmailerror}</p>
 
-              <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsPhone} controlId="floatingInput" label={product.phone}>
+              <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsPhone} controlId="floatingInput" label="phone">
                   <Form.Control type="number" placeholder="name@example.com" />
                   <FaPhoneFlip  className='registration_icon'></FaPhoneFlip>
               </FloatingLabel>
               <p className='text-danger'>{userPhoneerror}</p>
-
-              {/* <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsPassword} controlId="floatingPassword" label="Password">
-                  <Form.Control type={passShow ? "text":"password"} placeholder="Password" />
-                  {passShow ?
-                  <AiFillEye onClick={()=>setpassShow(!passShow)} className='registration_icon'></AiFillEye>
-                  
-                    :
-                  <AiTwotoneEyeInvisible onClick={()=>setpassShow(!passShow)} className='registration_icon'></AiTwotoneEyeInvisible>
-                    
-                  }
-              </FloatingLabel>
-                <p className='text-danger'>{userpassworderror}</p> */}
 
               {loading ?
               <div className='text-center'>
@@ -174,12 +162,6 @@ const Profile = () => {
                 <ListGroup.Item>Phone: - {product.phone}</ListGroup.Item>
               </ListGroup>
             </Col>
-          
-            {/* <Col md="4" className='mt-1 m-auto'>
-              <h1 className='my-4'>Buy Food</h1>
-              <FoodItems/>
-            </Col> */}
-
           </Row>
       </Container>
     </MasterLayout>
