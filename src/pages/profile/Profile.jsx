@@ -118,7 +118,7 @@ const Profile = () => {
           <Row className='res shadow-md rounded my-4'>
             <div className='text-center mb-3 registration_text'><h1><span>Update Your Profile</span> Here</h1></div>
 
-            <Col md="6" className='mt-1 m-auto'>
+            <Col md="6" className='mt-1 m-auto shadow-sm p-5'>
 
               <FloatingLabel value="dfd" className='registration_icon--section' onChange={handleRegistrationsName} controlId="floatingInput" label="Name">
                   <Form.Control size="sm" type="text" placeholder="Name"/>
@@ -155,7 +155,8 @@ const Profile = () => {
               }
             </Col>
 
-            <Col md="6" className='mt-1 m-auto'>
+            <Col md="5" className='mt-1 m-auto shadow-sm p-5'>
+              <h4>User information</h4>
               <ListGroup>
                 <ListGroup.Item>Email: - {product.name}</ListGroup.Item>
                 <ListGroup.Item>Name: - {product.email}</ListGroup.Item>

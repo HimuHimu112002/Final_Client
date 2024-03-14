@@ -49,7 +49,7 @@ function NavMenu() {
 
           <div className='menu__item'>
             <Link to="/"><p className='text-white'>Home</p></Link>
-            <Link to="/product"><p className='text-white'>All Food</p></Link>
+            <Link to="/product"><p className='text-white'>Product Order</p></Link>
             {!data &&
               <Link to="/login"><p className='LoginButton px-2 py-1 rounded text-white'>Login</p></Link>
             }

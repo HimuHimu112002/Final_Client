@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Card,Form, Button } from 'react-bootstrap';
-import {Link } from 'react-router-dom';
+import { Container, Row, Col, Card,Form, Button, Table } from 'react-bootstrap';
+import {Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import MasterLayout from '../../components/MasterLayout';
-
+import { AiFillEye } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 const AdminPannel = () => {
+    let data = useSelector((state)=> state.userLoginInfo.userInfo)
+    let navigate = useNavigate();
     let [brand, setBrand] = useState("")
     let [brandname, setBrandName] = useState([])
     let [image, setImage] = useState("")
@@ -80,7 +84,7 @@ const AdminPannel = () => {
         setFoodIteme(data.data.data)
         }
         allproduct()
-    },[])
+    },[foodItemname])
 
 
     let handleFname =(e)=>{
@@ -113,6 +117,7 @@ const AdminPannel = () => {
             brand: brandvalue,
             category: categoryvalue,
             discription: dis,
+            uid:data.user_id._id
           },
         };
         axios
@@ -134,7 +139,44 @@ const AdminPannel = () => {
           .catch((error) => {
             console.log(error);
           });
-      };
+    };
+
+      // Go to detail page
+    let handleDetails = (id) =>{
+        navigate(`/detail/${id}`)
+    }
+
+      // Go to detail page
+ 
+    // delete food items
+    let handleDelete = async (id) =>{
+        Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result)=> {
+        if (result.isConfirmed) {
+        let data = axios.post(`http://localhost:5000/api/v1/deletFood`,
+        {
+            id: id,
+        })
+        if(data.data['status'] === "success"){
+            toast.success('Food Delete Success')
+        }
+        Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+        });
+        }
+        });
+    }
+
+
   return (
     <MasterLayout>
         <Container>
@@ -172,31 +214,32 @@ const AdminPannel = () => {
                 </Col>
 
                 <Col className='mt-4 d-flex' md={12}>
-                    <Col md={6}>
-                        <h5>Add Food Brand name</h5>
+                    <Col md={5}>
+                        <h5>Create Product Brand name</h5>
                         {/* <p className='text-danger'>{branderror}</p> */}
                         <Form.Control onChange={(e)=>setBrand(e.target.value)} size="lg" type="text" placeholder="Add Brand"/>
-                        <Button onClick={handleBrand} className='mt-2' variant="primary">Save</Button>
+                        <Button onClick={handleBrand} className='mt-2 w-100' variant="primary">Save</Button>
                     </Col>
-                    <Col className='mx-1' md={6}>
-                        <h5>Add Food Category name</h5>
+                    <Col className='ms-5' md={5}>
+                        <h5>Create Product Category name</h5>
                         <Form.Control onChange={(e)=>setCategory(e.target.value)} size="lg" type="text" placeholder="Add Category" />
-                        <Button onClick={handleCategory} className='mt-2' variant="primary">Save</Button>
+                        <Button onClick={handleCategory} className='mt-2 w-100' variant="primary">Save</Button>
                     </Col>
                 </Col>
 
                 <Col className='mt-5 mb-3'>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Food Name</Form.Label>
+                            <Form.Label>Product Name</Form.Label>
                             <Form.Control onChange={handleFname} type="text" placeholder="Apple" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Food Price</Form.Label>
+                            <Form.Label>Product Price</Form.Label>
                             <Form.Control onChange={handleFprice} type="text" placeholder="Price" />
                         </Form.Group>
 
+                        <Form.Label>Product Image</Form.Label>
                         <Form.Group controlId="formFile" className="mb-3">
                             <input
                             type="file"
@@ -227,12 +270,49 @@ const AdminPannel = () => {
                         </Form.Select>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Food Description</Form.Label>
+                            <Form.Label>Product Description</Form.Label>
                             <Form.Control onChange={handleFdis} as="textarea" rows={3} />
                         </Form.Group>
                     </Form>
                     <Button onClick={handleFoodSave} variant="primary">Save Food</Button>
                     <Link className='mx-3' to="/profile"><Button variant="primary">Back to profile</Button></Link>
+                </Col>
+
+                <Col md='10'>
+                    <div>
+                    <h3 className='text-center my-4'>Access Your Product</h3>
+                        <Table responsive="sm">
+                            <thead>
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {foodItemname.map((item, i)=>(
+                                (data.user_id._id === item.uid &&
+                                <>
+                                    <tr>
+                                        <td>{i}</td>
+                                        <td><Card.Img className='dashboard__img' variant="top" src={`http://localhost:5000/images/${item.img}`}/></td>
+                                        <td>{item.name}</td>
+                                        <td>{item.brand}</td>
+                                        <td>{item.category}</td>
+                                        <td>{item.price}</td>
+                                        <td><div className='d-flex'><p className='text-bg-danger px-2 rounded dashboard__delete--item' onClick={()=>handleDelete(item._id)}>Delete</p> <p className='ms-2 text-bg-info px-2 text-white rounded'>Edit</p></div></td>
+                                        <td><AiFillEye className='dashboard__delete--item' onClick={()=>handleDetails(item._id)}/></td>
+                                    </tr>
+                                </>)
+                            ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </Col>
             </Row>
         </Container>

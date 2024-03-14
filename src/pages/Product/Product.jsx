@@ -19,7 +19,7 @@ return (
     <MasterLayout>
       <Container>
         <Row>
-          <h1 className='text-center my-4'>All Popular Food</h1>
+          <h1 className='text-center my-4'>All Popular Product</h1>
           <FoodItems/>
         </Row>
       </Container>

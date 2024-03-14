@@ -7,15 +7,14 @@ const HeroSection = () => {
         <Row>
             <Col className='hero__left--content' md="6">
                 <div>
-                    <h1>Deliver Food To Your Door StepI</h1>
-                    <p>Authentic Food, Quick Service, Fast Delivery</p>
+                    <h2>Fast Deliver Your Trusted Product To Your Door Step</h2>
+                    <p>Authentic Product, Quick Service, Fast Delivery</p>
                 </div>
             </Col>
 
             <Col md="6">
                 <img className='img-fluid w-100' src='image/bannerLogo.png'/>
             </Col>
-
         </Row>
     </Container>
   )

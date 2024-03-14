@@ -4,9 +4,9 @@ import Footer from './Footer.jsx'
 const MasterLayout = (props) => {
   return (
     <>
-        <NavMenu/>
-            {props.children}
-        <Footer/>
+      <NavMenu/>
+          {props.children}
+      <Footer/>
     </>
   )
 }

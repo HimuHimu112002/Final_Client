@@ -74,11 +74,11 @@ const LoginPage = () => {
     }
   return (
     <MasterLayout>
-        <Container className='registration_top'>
+        <Container className='registration_top shadow my-5'>
             <Row className='res rounded my-4'>
                 <div className='text-center mb-3 registration_text'><h1><span>Login</span> Here</h1></div>
                 <div className='text-center mb-3 text-danger'><p>{error}</p></div>
-                <Col md="6" className='m-auto'>
+                <Col md="6" className='m-auto py-4'>
 
                     <FloatingLabel className='registration_icon--section' onChange={handleuserLoginEmail} controlId="floatingInput" label="Email address">
                         <Form.Control type="email" placeholder="name@example.com" />

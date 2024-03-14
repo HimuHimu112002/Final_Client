@@ -90,11 +90,11 @@ const Registration = () => {
 
 return (
     <MasterLayout>
-        <Container className='registration_top'>
+        <Container className='registration_top shadow my-5'>
             <Row className='res shadow-md rounded my-4'>
                 <div className='text-center mb-3 registration_text'><h1><span>Registration</span> Here</h1></div>
                 <div className='text-center mb-3 text-danger'><p>{error}</p></div>
-                <Col md="6" className='mt-1 m-auto'>
+                <Col md="6" className='mt-1 m-auto py-4'>
                 
                     <FloatingLabel className='registration_icon--section' onChange={handleRegistrationsName} controlId="floatingInput" label="Your's name here">
                         <Form.Control size="sm" type="text" placeholder="Name" />

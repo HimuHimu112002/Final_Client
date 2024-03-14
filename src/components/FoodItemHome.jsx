@@ -48,7 +48,7 @@ const FoodItemHome = () => {
 return (
   <Container>
     <Row>
-      <Col md={4} className='my-4'>
+      {/* <Col md={4} className='my-4'>
         <Form.Label>Search Brand Name</Form.Label>
         <Form.Select onChange={(e)=>sethandleBrand(e.target.value)} className="mb-3" aria-label="Default select example">
             <option>Open this select menu</option>
@@ -65,17 +65,17 @@ return (
             ))}
         </Form.Select>
         <Button onClick={handlCategorySearch}>Search Category</Button>
-      </Col>
+      </Col> */}
       {foodItemname.map((item,i)=>(
         <Col key={i} className='my-4' md={4}>
-          <Card style={{ width: 'auto' }}>
-            <Card.Img variant="top" src={item.img} />
+          <Card className='shadow' style={{ width: 'auto' }}>
+            <Card.Img variant="top" src={`http://localhost:5000/images/${item.img}`}/>
             <Card.Body>
-              <Card.Title>Food Item: - {item.name}</Card.Title>
+              <Card.Title>Product: - {item.name}</Card.Title>
               <h5>Brand: - {item.brand}</h5>
               <h5>Category: - {item.category}</h5>
               <h5>Price: - {item.price}</h5>
-              <p className='text-danger food__detail--button' onClick={()=>handleDetails(item._id)}>learn more...........</p>
+              <p className='text-danger food__detail--button' onClick={()=>handleDetails(item._id)}>See more...........</p>
             </Card.Body>
           </Card>
         </Col>

@@ -6,7 +6,7 @@ const ProductSlide = () => {
     <Container className='my-5'>
       <Row>
         <Col>
-          <h1>Popular Food</h1>
+          <h1>Popular Product</h1>
           <FoodItemHome/>
         </Col>
       </Row>
