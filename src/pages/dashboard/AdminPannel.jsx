@@ -98,127 +98,144 @@ const AdminPannel = () => {
     let handleFdis =(e)=>{
         setDis(e.target.value)
     }
-    let handleFoodSave = async ()=>{
-        if(foodname && price && brandvalue && categoryvalue && dis){
-            let data = await axios.post("http://localhost:5000/api/v1/addfood",
-            {
-                name: foodname,
-                price: price,
-                // img: image,
-                brand: brandvalue,
-                category: categoryvalue,
-                discription: dis,
-            })
-            if(data.data.error){
-                //setBrandError(data.data.error)
-            }
-            if(data.data['status'] === "success"){
+    const handleFoodSave = () => {
+        let config = {
+          method: "post",
+          maxBodyLength: Infinity,
+          url: "http://localhost:5000/api/v1/addfood",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          data: {
+            name: foodname,
+            price: price,
+            img: image,
+            brand: brandvalue,
+            category: categoryvalue,
+            discription: dis,
+          },
+        };
+        axios
+          .request(config)
+          .then((response) => {
+            if ("success" in response.data) {
                 toast.success('Food Item Add Success')
+            //   setTitle("");
+            //   setImage("");
+            //   setDesc("");
+            //   setShowPage({
+            //     add: false,
+            //     table: true,
+            //     edit: false,
+            //   });
+            //   setRealTime(!realTime);
             }
-        }
-    }
-    
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
   return (
     <MasterLayout>
-    <Container>
-        <Row>
-            <h1 className='my-4 text-center'>Welcome to the Admin Dashboard!</h1>
-            <Col md={4}>
-                <Card className='bg-warning text-white'>
-                <Card.Body>
-                    <Card.Title>Products</Card.Title>
-                    <Card.Text>
-                        <h3>Total products: {foodItemname.length}</h3>
-                    </Card.Text>
-                </Card.Body>
-                </Card>
-            </Col>
-            <Col md={4}>
-                <Card className='bg-info text-white'>
-                <Card.Body>
-                    <Card.Title>Brand</Card.Title>
-                    <Card.Text>
-                        <h3>Total Brand: {brandname.length}</h3>
-                    </Card.Text>
-                </Card.Body>
-                </Card>
-            </Col>
-            <Col md={4}>
-                <Card className='bg-info text-white'>
-                <Card.Body>
-                    <Card.Title>Category</Card.Title>
-                    <Card.Text>
-                        <h3>Total Category: {categoryname.length}</h3>
-                    </Card.Text>
-                </Card.Body>
-                </Card>
-            </Col>
-
-            <Col className='mt-4 d-flex' md={12}>
-                <Col md={6}>
-                    <h5>Add Food Brand name</h5>
-                    {/* <p className='text-danger'>{branderror}</p> */}
-                    <Form.Control onChange={(e)=>setBrand(e.target.value)} size="lg" type="text" placeholder="Add Brand"/>
-                    <Button onClick={handleBrand} className='mt-2' variant="primary">Save</Button>
+        <Container>
+            <Row>
+                <h1 className='my-4 text-center'>Welcome to the Admin Dashboard!</h1>
+                <Col md={4}>
+                    <Card className='bg-warning text-white'>
+                    <Card.Body>
+                        <Card.Title>Products</Card.Title>
+                        <Card.Text>
+                            <h3>Total products: {foodItemname.length}</h3>
+                        </Card.Text>
+                    </Card.Body>
+                    </Card>
                 </Col>
-                <Col className='mx-1' md={6}>
-                    <h5>Add Food Category name</h5>
-                    <Form.Control onChange={(e)=>setCategory(e.target.value)} size="lg" type="text" placeholder="Add Category" />
-                    <Button onClick={handleCategory} className='mt-2' variant="primary">Save</Button>
+                <Col md={4}>
+                    <Card className='bg-info text-white'>
+                    <Card.Body>
+                        <Card.Title>Brand</Card.Title>
+                        <Card.Text>
+                            <h3>Total Brand: {brandname.length}</h3>
+                        </Card.Text>
+                    </Card.Body>
+                    </Card>
                 </Col>
-            </Col>
+                <Col md={4}>
+                    <Card className='bg-info text-white'>
+                    <Card.Body>
+                        <Card.Title>Category</Card.Title>
+                        <Card.Text>
+                            <h3>Total Category: {categoryname.length}</h3>
+                        </Card.Text>
+                    </Card.Body>
+                    </Card>
+                </Col>
 
-            <Col className='mt-5 mb-3'>
-                <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Food Name</Form.Label>
-                        <Form.Control onChange={handleFname} type="text" placeholder="Apple" />
-                    </Form.Group>
+                <Col className='mt-4 d-flex' md={12}>
+                    <Col md={6}>
+                        <h5>Add Food Brand name</h5>
+                        {/* <p className='text-danger'>{branderror}</p> */}
+                        <Form.Control onChange={(e)=>setBrand(e.target.value)} size="lg" type="text" placeholder="Add Brand"/>
+                        <Button onClick={handleBrand} className='mt-2' variant="primary">Save</Button>
+                    </Col>
+                    <Col className='mx-1' md={6}>
+                        <h5>Add Food Category name</h5>
+                        <Form.Control onChange={(e)=>setCategory(e.target.value)} size="lg" type="text" placeholder="Add Category" />
+                        <Button onClick={handleCategory} className='mt-2' variant="primary">Save</Button>
+                    </Col>
+                </Col>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Food Price</Form.Label>
-                        <Form.Control onChange={handleFprice} type="text" placeholder="Price" />
-                    </Form.Group>
+                <Col className='mt-5 mb-3'>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Food Name</Form.Label>
+                            <Form.Control onChange={handleFname} type="text" placeholder="Apple" />
+                        </Form.Group>
 
-                    <Form.Group controlId="formFile" className="mb-3">
-                        <input
-                        type="file"
-                        id="image"
-                        name="img"
-                        onChange={(e) => setImage(e.target.files[0])}
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Food Price</Form.Label>
+                            <Form.Control onChange={handleFprice} type="text" placeholder="Price" />
+                        </Form.Group>
 
-                        />
-                    </Form.Group>
+                        <Form.Group controlId="formFile" className="mb-3">
+                            <input
+                            type="file"
+                            id="image"
+                            name="img"
+                            onChange={(e) => setImage(e.target.files[0])}
 
-                    <Form.Label>Select Brand Name</Form.Label>
-                    <Form.Select onChange={handleFbrand} className="mb-3" aria-label="Default select example">
-                        <option>Open this select Brand</option>
-                        {brandname.map((item, i)=>(
-                            <>
-                                <option key={i}>{item.brand}</option>
-                                <Button>delte</Button>
-                            </>
-                        ))}
-                    </Form.Select>
+                            />
+                        </Form.Group>
 
-                    <Form.Label>Select Category Name</Form.Label>
-                    <Form.Select onChange={handleFcategory} className="mb-3" aria-label="Default select example">
-                        <option>Open this select Category</option>
-                        {categoryname.map((item, i)=>(
-                            <option key={i}>{item.category}</option>
-                        ))}
-                    </Form.Select>
+                        <Form.Label>Select Brand Name</Form.Label>
+                        <Form.Select onChange={handleFbrand} className="mb-3" aria-label="Default select example">
+                            <option>Open this select Brand</option>
+                            {brandname.map((item, i)=>(
+                                <>
+                                    <option key={i}>{item.brand}</option>
+                                    <Button>delte</Button>
+                                </>
+                            ))}
+                        </Form.Select>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Food Description</Form.Label>
-                        <Form.Control onChange={handleFdis} as="textarea" rows={3} />
-                    </Form.Group>
-                </Form>
-                <Button onClick={handleFoodSave} variant="primary">Save Food</Button>
-                <Link className='mx-3' to="/profile"><Button variant="primary">Back to profile</Button></Link>
-            </Col>
-        </Row>
-    </Container>
+                        <Form.Label>Select Category Name</Form.Label>
+                        <Form.Select onChange={handleFcategory} className="mb-3" aria-label="Default select example">
+                            <option>Open this select Category</option>
+                            {categoryname.map((item, i)=>(
+                                <option key={i}>{item.category}</option>
+                            ))}
+                        </Form.Select>
+
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Food Description</Form.Label>
+                            <Form.Control onChange={handleFdis} as="textarea" rows={3} />
+                        </Form.Group>
+                    </Form>
+                    <Button onClick={handleFoodSave} variant="primary">Save Food</Button>
+                    <Link className='mx-3' to="/profile"><Button variant="primary">Back to profile</Button></Link>
+                </Col>
+            </Row>
+        </Container>
     </MasterLayout>
   )
 }
