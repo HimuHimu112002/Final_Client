@@ -123,18 +123,10 @@ const AdminPannel = () => {
         axios
           .request(config)
           .then((response) => {
-            if ("success" in response.data) {
-                toast.success('Food Item Add Success')
-            //   setTitle("");
-            //   setImage("");
-            //   setDesc("");
-            //   setShowPage({
-            //     add: false,
-            //     table: true,
-            //     edit: false,
-            //   });
-            //   setRealTime(!realTime);
-            }
+              toast.success('Product Item Add Success')
+            //   if ("success" in response.data) {
+    
+            // }
           })
           .catch((error) => {
             console.log(error);
@@ -145,8 +137,6 @@ const AdminPannel = () => {
     let handleDetails = (id) =>{
         navigate(`/detail/${id}`)
     }
-
-      // Go to detail page
  
     // delete food items
     let handleDelete = async (id) =>{
@@ -160,13 +150,11 @@ const AdminPannel = () => {
         confirmButtonText: "Yes, delete it!"
         }).then((result)=> {
         if (result.isConfirmed) {
-        let data = axios.post(`http://localhost:5000/api/v1/deletFood`,
+        axios.post(`http://localhost:5000/api/v1/deletFood`,
         {
             id: id,
         })
-        if(data.data['status'] === "success"){
-            toast.success('Food Delete Success')
-        }
+        toast.success('Product Delete Success')
         Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -246,7 +234,6 @@ const AdminPannel = () => {
                             id="image"
                             name="img"
                             onChange={(e) => setImage(e.target.files[0])}
-
                             />
                         </Form.Group>
 
@@ -280,7 +267,7 @@ const AdminPannel = () => {
 
                 <Col md='10'>
                     <div>
-                    <h3 className='text-center my-4'>Access Your Product</h3>
+                    <h3 className='text-center my-4'>Your Created Personal Product</h3>
                         <Table responsive="sm">
                             <thead>
                                 <tr>

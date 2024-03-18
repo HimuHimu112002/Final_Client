@@ -3,14 +3,16 @@ import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch} from 'react-redux';
 import { userLoginInfo } from '../slices/userSlice';
 import { Button } from 'react-bootstrap';
 import { GoArrowRight } from "react-icons/go";
-
+import { CiShoppingCart } from "react-icons/ci";
+import { FaAppStore } from "react-icons/fa";
+import axios from 'axios';
 function NavMenu() {
   let navigate = useNavigate()
   let dispatch = useDispatch()
@@ -28,6 +30,16 @@ function NavMenu() {
   let handleSearch = ()=>{
     navigate(`/search/${name}`)
   }
+
+  let [foodItemname, setFoodIteme] = useState([])
+  console.log(foodItemname);
+  useEffect(()=>{
+    async function allproduct(){
+      let data = await axios.get("http://localhost:5000/api/v1/getwishlist")
+      setFoodIteme(data.data)
+    }
+    allproduct()
+  },[])
   return (
     <Navbar expand="lg shadow py-4 sticky-top bg-dark">
       <Container>
@@ -50,12 +62,22 @@ function NavMenu() {
           <div className='menu__item'>
             <Link to="/"><p className='text-white'>Home</p></Link>
             <Link to="/product"><p className='text-white'>Product Order</p></Link>
+
             {!data &&
               <Link to="/login"><p className='LoginButton px-2 py-1 rounded text-white'>Login</p></Link>
             }
           </div>
         </div>
-
+        {data &&
+          <div className='profile__section'>
+            <CiShoppingCart/>
+          </div>
+        }
+        {data &&
+          <div className='profile__section'>
+            <Link to="/wish"><FaAppStore className='wish__icon'/></Link>
+          </div>
+        }
         {data &&
           <div className='profile__section'>
             <CgProfile onClick={()=>setShow(!show)}/>

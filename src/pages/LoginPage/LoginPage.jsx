@@ -65,7 +65,7 @@ const LoginPage = () => {
                     setloading(false)
                 },1000)
                 setTimeout(()=>{
-                    navigate('/product')
+                    navigate('/')
                 },2000)
             }
   

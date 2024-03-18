@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 const HeroSection = () => {
 

@@ -21,7 +21,6 @@ const Otp = () => {
         setuserEmailerror("")
     }
    
-
     let handleLoginSubmit = async ()=>{
         if(!otp){
             setuserEmailerror("Please Input Your Otp Here !")
@@ -77,8 +76,6 @@ const Otp = () => {
                     <Button onClick={handleLoginSubmit} className='mt-4 w-100 login_button'>Verify</Button>
                     
                     }
-
-                    
                 </Col>
             </Row>
         </Container>

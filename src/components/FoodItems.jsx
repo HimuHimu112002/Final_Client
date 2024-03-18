@@ -25,8 +25,22 @@ const FoodItems = () => {
 
 
   // Go to edit page
-  let handleEdit = (id) =>{
-    navigate(`/update/${id}`)
+  // let handleEdit = (id) =>{
+  //   navigate(`/update/${id}`)
+  // }
+
+  let handleWishlist = async (e) =>{
+    toast.success("Wish List Add Success")
+    const headers = {
+      'user_id': data.user_id._id,
+      'Content-Type': 'application/json',
+    };
+    await axios.post("http://localhost:5000/api/v1/wishlist",{productID:e},{ headers })
+    .then(()=>{
+      setTimeout(()=>{
+        navigate("/wish")
+      },2000)
+    })
   }
 return (
   <Container>
@@ -46,7 +60,7 @@ return (
                :
                 <>
                 <Button variant="primary">Buy Now</Button>
-                <Button onClick={()=>handleEdit(item._id)} className='mx-3' variant="success">Add Wish List</Button>
+                <Button onClick={()=>handleWishlist(item._id)} className='mx-3' variant="success">Add Wish List</Button>
                 </>
               }
               

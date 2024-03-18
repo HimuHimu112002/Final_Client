@@ -48,6 +48,10 @@ function App() {
       path: "/search/:name",
       element: <FoodSearch/> ,
     },
+    {
+      path: "/wish",
+      element:  <WishListPage/>,
+    },
     
   ]
   )
@@ -61,5 +65,6 @@ import AdminPannel from './pages/dashboard/AdminPannel.jsx';
 import Details from './pages/FoodDetails/Details.jsx';
 import Fupdate from './pages/FoodUpdate/Fupdate.jsx';
 import FoodSearch from './pages/SearchPage/FoodSearch.jsx';
+import WishListPage from './pages/wishList/WishListPage.jsx';
 
 export default App

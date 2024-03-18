@@ -22,17 +22,17 @@ const Details = () => {
             <Row>
                 {foodItemname.map((item,i)=>(
                     <Col key={i} className='my-4'>
-                    <Card style={{ width: 'auto' }}>
-                        <Card.Img variant="top" src={`http://localhost:5000/images/${item.img}`}/>
-                        <Card.Body>
-                        <Card.Title>Product: - {item.name}</Card.Title>
-                        <h5>Brand: - {item.brand}</h5>
-                        <h5>Category: - {item.category}</h5>
-                        <h5>Price: - {item.price}</h5>
-                        <h5>Food Description</h5>
-                        <span>{item.discription}</span>
-                        </Card.Body>
-                    </Card>
+                        <Card style={{ width: 'auto' }}>
+                            <Card.Img variant="top" src={`http://localhost:5000/images/${item.img}`}/>
+                            <Card.Body>
+                            <Card.Title>Product: - {item.name}</Card.Title>
+                            <h5>Brand: - {item.brand}</h5>
+                            <h5>Category: - {item.category}</h5>
+                            <h5>Price: - {item.price}</h5>
+                            <h5>Food Description</h5>
+                            <span>{item.discription}</span>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 ))}
             </Row>

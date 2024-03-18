@@ -252,3 +252,7 @@ border-radius: 50%;
 .card img{
   height: 400px;
 }
+
+.wish__icon{
+  color: white;
+}
