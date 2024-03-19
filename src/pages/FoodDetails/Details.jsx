@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {Card, Col, Container, Row } from 'react-bootstrap'
 import axios from 'axios'
 import MasterLayout from '../../components/MasterLayout'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Details = () => {
 
@@ -32,6 +32,7 @@ const Details = () => {
                             <h5>Food Description</h5>
                             <span>{item.discription}</span>
                             </Card.Body>
+                            <Link to='/'><p className='ms-4'>Back to home</p></Link>
                         </Card>
                     </Col>
                 ))}

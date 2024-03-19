@@ -47,7 +47,7 @@ return (
     <Row>
       {foodItemname.map((item,i)=>(
         <Col key={i} className='my-4' md={4}>
-          <Card className='shadow' style={{ width: 'auto' }}>
+          <Card className='shadow-sm' style={{ width: 'auto' }}>
             <Card.Img variant="top" src={`http://localhost:5000/images/${item.img}`}/>
             <Card.Body>
               <Card.Title>Product : - {item.name}</Card.Title>

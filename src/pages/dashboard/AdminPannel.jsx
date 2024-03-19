@@ -239,18 +239,17 @@ const AdminPannel = () => {
 
                         <Form.Label>Select Brand Name</Form.Label>
                         <Form.Select onChange={handleFbrand} className="mb-3" aria-label="Default select example">
-                            <option>Open this select Brand</option>
+                            {/* <option>Open this select B/rand</option> */}
                             {brandname.map((item, i)=>(
                                 <>
                                     <option key={i}>{item.brand}</option>
-                                    <Button>delte</Button>
+                                    
                                 </>
                             ))}
                         </Form.Select>
 
                         <Form.Label>Select Category Name</Form.Label>
                         <Form.Select onChange={handleFcategory} className="mb-3" aria-label="Default select example">
-                            <option>Open this select Category</option>
                             {categoryname.map((item, i)=>(
                                 <option key={i}>{item.category}</option>
                             ))}
@@ -271,7 +270,6 @@ const AdminPannel = () => {
                         <Table responsive="sm">
                             <thead>
                                 <tr>
-                                    <th>Serial</th>
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Brand</th>
@@ -285,8 +283,7 @@ const AdminPannel = () => {
                             {foodItemname.map((item, i)=>(
                                 (data.user_id._id === item.uid &&
                                 <>
-                                    <tr>
-                                        <td>{i}</td>
+                                    <tr key={i}>
                                         <td><Card.Img className='dashboard__img' variant="top" src={`http://localhost:5000/images/${item.img}`}/></td>
                                         <td>{item.name}</td>
                                         <td>{item.brand}</td>

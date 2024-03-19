@@ -12,6 +12,7 @@ import { Button } from 'react-bootstrap';
 import { GoArrowRight } from "react-icons/go";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaAppStore } from "react-icons/fa";
+import { GiSelfLove } from "react-icons/gi";
 import axios from 'axios';
 function NavMenu() {
   let navigate = useNavigate()
@@ -69,14 +70,10 @@ function NavMenu() {
           </div>
         </div>
         {data &&
-          <div className='profile__section'>
-            <CiShoppingCart/>
-          </div>
+            <CiShoppingCart className='cart__icon'/>
         }
         {data &&
-          <div className='profile__section'>
-            <Link to="/wish"><FaAppStore className='wish__icon'/></Link>
-          </div>
+            <Link to="/wish"><GiSelfLove className='wish__icon'/></Link>
         }
         {data &&
           <div className='profile__section'>

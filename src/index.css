@@ -253,6 +253,7 @@ border-radius: 50%;
   height: 400px;
 }
 
-.wish__icon{
+.wish__icon, .cart__icon{
   color: white;
+  font-size: 38px;
 }

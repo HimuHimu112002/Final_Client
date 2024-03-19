@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 const WishListPage = () => {
   let data = useSelector((state)=> state.userLoginInfo.userInfo)
   let navigate = useNavigate()
+  
   useEffect(()=> {
     if(!data){
       navigate("/login")
