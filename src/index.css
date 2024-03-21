@@ -245,7 +245,7 @@ border-radius: 50%;
   height: 50px;
 }
 
-.dashboard__delete--item{
+.dashboard__delete--item, .Counter__incress{
   cursor: pointer;
 }
 

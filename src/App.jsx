@@ -52,6 +52,14 @@ function App() {
       path: "/wish",
       element:  <WishListPage/>,
     },
+    {
+      path: "/cart/:id",
+      element:  <Cartdetails/>,
+    },
+    {
+      path: "/cart",
+      element:  <CartList/>,
+    },
     
   ]
   )
@@ -66,5 +74,7 @@ import Details from './pages/FoodDetails/Details.jsx';
 import Fupdate from './pages/FoodUpdate/Fupdate.jsx';
 import FoodSearch from './pages/SearchPage/FoodSearch.jsx';
 import WishListPage from './pages/wishList/WishListPage.jsx';
+import CartList from './pages/cart/CartList.jsx';
+import Cartdetails from './pages/CartDetails/Cartdetails.jsx';
 
 export default App

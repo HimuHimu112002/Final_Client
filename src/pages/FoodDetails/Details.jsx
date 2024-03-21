@@ -8,6 +8,7 @@ const Details = () => {
 
     let params = useParams()
     let [foodItemname, setFoodIteme] = useState([])
+    
     useEffect(()=>{
         async function allproduct(){
         let data = await axios.get(`http://localhost:5000/api/v1/foodDetail/${params.id}`)

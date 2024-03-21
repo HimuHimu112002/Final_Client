@@ -51,11 +51,15 @@ const WishListPage = () => {
       }
       });
   }
+
+  let handleCartDetails = (id) =>{
+    navigate(`/cart/${id}`)
+  }
   return (
     <MasterLayout>
       <Container>
         <Row>
-          <Col md="10" className='m-auto'>
+          <Col md="12" className='m-auto'>
             <h1 className='text-center py-3'>Your Favourite Product</h1>
             <Table className='shadow-sm' responsive="sm">
                 <thead>
@@ -65,7 +69,7 @@ const WishListPage = () => {
                     <th>Brand</th>
                     <th>Category</th>
                     <th>Price</th>
-                    <th>Action</th>
+                    <th className='text-center'>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -79,7 +83,9 @@ const WishListPage = () => {
                       <td>{item.productID.brand}</td>
                       <td>{item.productID.category}</td>
                       <td>{item.productID.price}</td>
-                      <td><div className='d-flex'><p onClick={()=>handlewishremove(item.productID._id)} className='text-bg-danger px-2 rounded dashboard__delete--item'>remove</p></div></td>
+                      <td className='d-flex justify-content-around'><div className='d-flex'><p onClick={()=>handlewishremove(item.productID._id)} className='text-bg-danger px-2 rounded dashboard__delete--item'>remove</p></div>
+                      <div className='d-flex'><p onClick={()=>handleCartDetails(item.productID._id)} className='text-bg-danger px-2 rounded dashboard__delete--item'>add-cart</p></div>
+                      </td>
                     </tr>
                   </>)
                 ))}

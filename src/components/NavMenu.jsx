@@ -70,7 +70,7 @@ function NavMenu() {
           </div>
         </div>
         {data &&
-            <CiShoppingCart className='cart__icon'/>
+            <Link to="/cart"><CiShoppingCart className='cart__icon'/></Link>
         }
         {data &&
             <Link to="/wish"><GiSelfLove className='wish__icon'/></Link>

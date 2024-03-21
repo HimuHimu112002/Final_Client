@@ -1,18 +1,17 @@
 import MasterLayout from '../../components/MasterLayout'
-import {useEffect, useState } from 'react'
+import {useEffect, useState,useRef } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {useNavigate } from 'react-router-dom';
-import {AiOutlineUser, AiOutlineMail, AiFillEye, AiTwotoneEyeInvisible } from 'react-icons/ai';
+import {AiOutlineUser, AiOutlineMail } from 'react-icons/ai';
 import {FaPhoneFlip } from "react-icons/fa6";
-import {ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ProgressBar } from 'react-loader-spinner'
 import axios from 'axios';
-import FoodItems from '../../components/FoodItems';
 import { useSelector } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
 
@@ -28,15 +27,12 @@ const Profile = () => {
 
   let [userName, setuserName] = useState("")
   let [userEmail, setuserEmail] = useState("")
-  let [userpassword, setuserpassword] = useState("")
   let [userphone, setPhone] = useState("")
 
   let [userNameerror, setuserNameerror] = useState("")
   let [userEmailerror, setuserEmailerror] = useState("")
   let [userPhoneerror, setuserPhoneerror] = useState("")
-  let [userpassworderror, setuserpassworderror] = useState("")
 
-  let [passShow, setpassShow] = useState(false)
   let [loading, setloading] = useState(false)
   let [product, setProduct] = useState([])
 
@@ -57,6 +53,7 @@ const Profile = () => {
     setuserPhoneerror("")
   }
   let handleRegistrationsSubmit = async ()=>{
+    //console.log(fastName);
     // if(!userName){
     //   setuserNameerror("Please Input Your Name Here !")
     // }

@@ -42,6 +42,11 @@ const FoodItems = () => {
       },2000)
     })
   }
+  
+
+  let handleCartDetails = (id) =>{
+    navigate(`/cart/${id}`)
+  }
 return (
   <Container>
     <Row>
@@ -59,7 +64,7 @@ return (
                 <Button className='w-100' variant="success">Personal Product</Button> 
                :
                 <>
-                <Button variant="primary">Buy Now</Button>
+                <Button onClick={()=>handleCartDetails(item._id)} variant="primary">Buy Now</Button>
                 <Button onClick={()=>handleWishlist(item._id)} className='mx-3' variant="success">Add Wish List</Button>
                 </>
               }
