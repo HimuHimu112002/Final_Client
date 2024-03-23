@@ -90,7 +90,7 @@ const Registration = () => {
 
 return (
     <MasterLayout>
-        <Container className='registration_top shadow my-5'>
+        <Container className='registration_top shadow my-5 bg-white rounded py-5'>
             <Row className='res shadow-md rounded my-4'>
                 <div className='text-center mb-3 registration_text'><h1><span>Registration</span> Here</h1></div>
                 <div className='text-center mb-3 text-danger'><p>{error}</p></div>
