@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineMail, AiFillEye, AiTwotoneEyeInvisible } from 'react-icons/ai';
 import { FaPhoneFlip } from "react-icons/fa6";
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ProgressBar } from 'react-loader-spinner'
 import MasterLayout from '../../components/MasterLayout';

@@ -23,12 +23,6 @@ const FoodItems = () => {
     navigate(`/detail/${id}`)
   }
 
-
-  // Go to edit page
-  // let handleEdit = (id) =>{
-  //   navigate(`/update/${id}`)
-  // }
-
   let handleWishlist = async (e) =>{
     toast.success("Wish List Add Success")
     const headers = {
@@ -43,7 +37,6 @@ const FoodItems = () => {
     })
   }
   
-
   let handleCartDetails = (id) =>{
     navigate(`/cart/${id}`)
   }
@@ -56,8 +49,6 @@ return (
             <Card.Img variant="top" src={`http://localhost:5000/images/${item.img}`}/>
             <Card.Body>
               <Card.Title>Product : - {item.name}</Card.Title>
-              <h5>Brand: - {item.brand}</h5>
-              <h5>Category: - {item.category}</h5>
               <h5>Price: - {item.price}</h5>
               <h6 className='text-danger food__detail--button py-2' onClick={()=>handleDetails(item._id)}>learn more...........!</h6>
               {data.user_id._id === item.uid ?
@@ -68,7 +59,6 @@ return (
                 <Button onClick={()=>handleWishlist(item._id)} className='mx-3' variant="success">Add Wish List</Button>
                 </>
               }
-              
             </Card.Body>
           </Card>
         </Col>

@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { Button, Form,Container,Row,Col } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ProgressBar } from 'react-loader-spinner'
 import MasterLayout from '../../components/MasterLayout'
@@ -14,7 +13,6 @@ const Otp = () => {
     let [otp, setOtp] = useState("")
     let [userEmailerror, setuserEmailerror] = useState("")
     let [loading, setloading] = useState(false)
-
 
     let handleuserLoginEmail = (e)=>{
         setOtp(e.target.value)

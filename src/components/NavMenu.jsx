@@ -11,7 +11,6 @@ import { userLoginInfo } from '../slices/userSlice';
 import { Button } from 'react-bootstrap';
 import { GoArrowRight } from "react-icons/go";
 import { CiShoppingCart } from "react-icons/ci";
-import { FaAppStore } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import axios from 'axios';
 function NavMenu() {

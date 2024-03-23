@@ -22,8 +22,6 @@ const CartList = () => {
   let [CartTotal, setCartTotal] = useState("")
   let [CartVatTotal, setCartVatTotal] = useState("")
   let [CartPayableTotal, setCartPayableTotal] = useState("")
-  let [CartCount, setCartCount] = useState("")
-
 
   useEffect(()=>{
     async function allproduct(){

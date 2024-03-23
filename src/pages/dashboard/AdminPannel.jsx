@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Card,Form, Button, Table } from 'react-bootstrap';
 import {Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import MasterLayout from '../../components/MasterLayout';
 import { AiFillEye } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
@@ -123,10 +123,7 @@ const AdminPannel = () => {
         axios
           .request(config)
           .then((response) => {
-              toast.success('Product Item Add Success')
-            //   if ("success" in response.data) {
-    
-            // }
+            toast.success('Product Item Add Success')
           })
           .catch((error) => {
             console.log(error);
@@ -164,14 +161,18 @@ const AdminPannel = () => {
         });
     }
 
+    // Go to edit page
+    let handleEdit = (id) =>{
+      navigate(`/update/${id}`)
+    }
 
   return (
     <MasterLayout>
         <Container>
             <Row>
-                <h1 className='my-4 text-center'>Welcome to the Admin Dashboard!</h1>
+                <h1 className='my-4 text-center'>Welcome to your Dashboard!</h1>
                 <Col md={4}>
-                    <Card className='bg-warning text-white'>
+                    <Card className='bg-info text-white'>
                     <Card.Body>
                         <Card.Title>Products</Card.Title>
                         <Card.Text>
@@ -201,10 +202,9 @@ const AdminPannel = () => {
                     </Card>
                 </Col>
 
-                <Col className='mt-4 d-flex' md={12}>
+                <Col className='mt-4 d-flex bg-white py-5 justify-content-center rounded' md={12}>
                     <Col md={5}>
                         <h5>Create Product Brand name</h5>
-                        {/* <p className='text-danger'>{branderror}</p> */}
                         <Form.Control onChange={(e)=>setBrand(e.target.value)} size="lg" type="text" placeholder="Add Brand"/>
                         <Button onClick={handleBrand} className='mt-2 w-100' variant="primary">Save</Button>
                     </Col>
@@ -215,7 +215,7 @@ const AdminPannel = () => {
                     </Col>
                 </Col>
 
-                <Col className='mt-5 mb-3'>
+                <Col className='mt-5 mb-3 bg-white py-5 px-4 rounded'>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Product Name</Form.Label>
@@ -239,7 +239,6 @@ const AdminPannel = () => {
 
                         <Form.Label>Select Brand Name</Form.Label>
                         <Form.Select onChange={handleFbrand} className="mb-3" aria-label="Default select example">
-                            {/* <option>Open this select B/rand</option> */}
                             {brandname.map((item, i)=>(
                                 <>
                                     <option key={i}>{item.brand}</option>
@@ -264,7 +263,7 @@ const AdminPannel = () => {
                     <Link className='mx-3' to="/profile"><Button variant="primary">Back to profile</Button></Link>
                 </Col>
 
-                <Col md='10'>
+                <Col md='12'>
                     <div>
                     <h3 className='text-center my-4'>Your Created Personal Product</h3>
                         <Table responsive="sm">
@@ -289,7 +288,7 @@ const AdminPannel = () => {
                                         <td>{item.brand}</td>
                                         <td>{item.category}</td>
                                         <td>{item.price}</td>
-                                        <td><div className='d-flex'><p className='text-bg-danger px-2 rounded dashboard__delete--item' onClick={()=>handleDelete(item._id)}>Delete</p> <p className='ms-2 text-bg-info px-2 text-white rounded'>Edit</p></div></td>
+                                        <td><div className='d-flex'><p className='text-bg-danger px-2 rounded dashboard__delete--item' onClick={()=>handleDelete(item._id)}>Delete</p> <p className='ms-2 text-bg-info px-2 text-white rounded dashboard__delete--item' onClick={()=>handleEdit(item._id)}>Edit</p></div></td>
                                         <td><AiFillEye className='dashboard__delete--item' onClick={()=>handleDetails(item._id)}/></td>
                                     </tr>
                                 </>)
