@@ -60,6 +60,14 @@ function App() {
       path: "/cart",
       element:  <CartList/>,
     },
+    {
+      path: "/delivery",
+      element:  <Delivery/>,
+    },
+    {
+      path: "/invoiceproduct/:id",
+      element:  <InvoiceProduct/>,
+    },
     
   ]
   )
@@ -76,5 +84,7 @@ import FoodSearch from './pages/SearchPage/FoodSearch.jsx';
 import WishListPage from './pages/wishList/WishListPage.jsx';
 import CartList from './pages/cart/CartList.jsx';
 import Cartdetails from './pages/CartDetails/Cartdetails.jsx';
+import Delivery from './pages/delivery/Delivery.jsx';
+import InvoiceProduct from './pages/ProductInvoice/InvoiceProduct.jsx';
 
 export default App

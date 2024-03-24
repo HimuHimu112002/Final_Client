@@ -13,6 +13,7 @@ import { GoArrowRight } from "react-icons/go";
 import { CiShoppingCart } from "react-icons/ci";
 import { GiSelfLove } from "react-icons/gi";
 import axios from 'axios';
+import { CiDeliveryTruck } from "react-icons/ci";
 function NavMenu() {
   let navigate = useNavigate()
   let dispatch = useDispatch()
@@ -73,6 +74,9 @@ function NavMenu() {
         }
         {data &&
             <Link to="/wish"><GiSelfLove className='wish__icon'/></Link>
+        }
+        {data &&
+            <Link to="/delivery"><CiDeliveryTruck className='wish__icon'/></Link>
         }
         {data &&
           <div className='profile__section'>

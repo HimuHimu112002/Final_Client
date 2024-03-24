@@ -33,7 +33,7 @@ const CartList = () => {
       data.data.forEach((item,i)=>{
         if(result.user_id._id === item.userID){
           total = total + parseInt(item.qty) * parseInt(item.price)
-          vat = parseInt(total * 0.05);
+          vat = (total * 0.05);
           payable = vat+total
           setCartTotal(total)
           setCartVatTotal(vat)
@@ -73,6 +73,17 @@ const CartList = () => {
       });
   }
 
+  let handleCheckout=()=>{
+    const headers = {
+      'user_id': localStorage.getItem('id'),
+      'Content-Type': 'application/json',
+    };
+    async function allproduct(){
+      let data = await axios.get("http://localhost:5000/api/v1/CreateInvoice",{headers})
+      window.location.href = data.data['data']['GatewayPageURL']
+    }
+    allproduct()
+  }
   return (
     <MasterLayout>
       <Container>
@@ -115,7 +126,7 @@ const CartList = () => {
               <ListGroup.Item>Total: - {CartTotal}</ListGroup.Item>
               <ListGroup.Item>Vat(5%): - {CartVatTotal}</ListGroup.Item>
               <ListGroup.Item>Payable: - {CartPayableTotal}</ListGroup.Item>
-              <Button className='mt-2' variant="success">Check Out</Button>
+              <Button onClick={handleCheckout} className='mt-2' variant="success">Check Out</Button>
             </ListGroup>
           </Col>
         </Row>
