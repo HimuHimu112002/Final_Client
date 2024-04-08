@@ -257,3 +257,25 @@ border-radius: 50%;
   color: white;
   font-size: 38px;
 }
+
+.statusColor{
+  margin: 0;
+  color: green;
+  text-transform: uppercase;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.statusPendigColor{
+  margin: 0;
+  color: #FD6011;
+  text-transform: uppercase;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.statusFailColor{
+  margin: 0;
+  color: red;
+  text-transform: uppercase;
+  margin-left: 10px;
+  font-weight: 700;
+}
